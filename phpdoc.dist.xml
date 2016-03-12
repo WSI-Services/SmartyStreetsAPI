@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <default-package-name>SmartyStreets API</default-package-name>
+    <encoding>utf-8</encoding>
+    <files>
+        <directory>source</directory>
+        <ignore>vendor</ignore>
+        <ignore-hidden>true</ignore-hidden>
+        <ignore-symlinks>true</ignore-symlinks>
+    </files>
+    <logging>
+        <level>error</level>
+        <paths>
+            <default>documentation/log/{DATE}.log</default>
+            <errors>documentation/log/{DATE}.errors.log</errors>
+        </paths>
+    </logging>
+    <parser>
+        <target>documentation/api/</target>
+        <markers>
+            <item>TODO</item>
+            <item>FIXME</item>
+        </markers>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+        <visibility></visibility>
+    </parser>
+    <title>WSI-Services - SmartyStreets API</title>
+    <transformations>
+        <template name="responsive" />
+    </transformations>
+    <transformer>
+        <target>documentation/api/</target>
+    </transformer>
+</phpdoc>

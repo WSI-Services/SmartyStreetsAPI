@@ -1,0 +1,6 @@
+/.vagrant
+/documentation
+/tests/logs
+/vendor
+composer.lock
+composer.phar
