@@ -1,15 +1,37 @@
 language: php
 php:
-  - 5.4
+  # - 5.4  # Minimum PHP version 5.5.9 for illuminate/contracts
   - 5.5
   - 5.6
   - 7.0
-  - hhvm
+  - 7.1
   - nightly
+  - hhvm
+
+addons:
+  apt:
+    packages:
+      - libcurl4-openssl-dev
+      - libmagic1
+      - zlib1g-dev
+
 install:
-  - utilities/travis/before-install.sh
-script: utilities/phpunit.sh
+  - ./utilities/travis/install.sh
+
+before_script:
+  - ./utilities/travis/before-script.sh
+
+script: ./utilities/phpunit.sh
+
 after_script:
-  - cat tests/logs/testdox.txt
-  - cat tests/logs/logfile.tap
-  - cat tests/logs/coverage.txt
+  - cat ./tests/logs/testdox.txt
+  - cat ./tests/logs/logfile.tap
+  - cat ./tests/logs/coverage.txt
+  - ./utilities/phploc.sh
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: 7.1
+    - php: nightly
+    - php: hhvm

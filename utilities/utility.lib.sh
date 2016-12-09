@@ -2,19 +2,19 @@
 #
 # Author: Sam Likins <sam.likins@wsi-services.com>
 # Copyright: Copyright (c) 2015-2016, WSI-Services
-# 
+#
 # License: http://opensource.org/licenses/gpl-3.0.html
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
@@ -45,9 +45,9 @@ if [[ $? -eq 1 ]]; then
 		fi
 	}
 	DISPLAY_HEADER_PREFIX="\n## "
-	DISPLAY_HEADER_POSTFIX="\n\n"
+	DISPLAY_HEADER_POSTFIX="\n"
 
-	# Display a line of output and optional default value and return responce
+	# Display a line of output and optional default value and return response
 	function dialog_line_input {
 		local DESCRIPTION="$1"
 		local DEFAULT="$2"
@@ -134,14 +134,19 @@ if [[ $? -eq 1 ]]; then
 	# Install and enable PECL modules
 	function pecl_install {
 		local EXTENSION="$1"
-		local SEEDER="${2:-\n}"
+		local VERSION="$2"
+		local SEEDER="${3:-\n}"
 
 		display_header "Install PECL extension '$EXTENSION'..."
 
 		if [[ -n "$(pecl list | awk '{print $1}' | grep "$EXTENSION")" ]]; then
 			display_header "PECL extension '$EXTENSION' already installed."
 		else
-			printf "$SEEDER" | pecl install $EXTENSION
+			if [[ -n "$VERSION" ]]; then
+				EXTENSION="$EXTENSION-$VERSION"
+			fi
+
+			printf "$SEEDER" | pecl install -f $EXTENSION
 
 			display_header "PECL extension '$EXTENSION' installed."
 		fi
@@ -154,6 +159,14 @@ if [[ $? -eq 1 ]]; then
 		echo "$(ldconfig -p | grep "$LIBRARY.so" | awk '{print $4}' | head -n1)"
 	}
 
+	# Compare Versions
+	function version_compare {
+		local VER1="$1"
+		local CMP="$2"
+		local VER2="$3"
+
+		php -r "exit(version_compare('$VER1', '$VER2', strtolower('$CMP')) ? 0 : 1);"
+	}
 
 	## Temporary resources
 
