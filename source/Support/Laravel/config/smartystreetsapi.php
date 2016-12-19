@@ -74,22 +74,22 @@ return [
 	'endpoints' => [
 		'us-street-address' => [
 			'model'		=> SmartyStreetsAPI\Service\UsStreetAddress::class,
-			'hostname'	=> 'api.smartystreets.com',
+			'hostname'	=> 'us-street.api.smartystreets.com',
 			'paths'		=> [ '/street-address' ]
 		],
 		'us-zip-code' => [
 			'model'		=> SmartyStreetsAPI\Service\UsZipCode::class,
-			'hostname'	=> 'api.smartystreets.com',
-			'paths'		=> [ '/zipcode' ]
+			'hostname'	=> 'us-zipcode.api.smartystreets.com',
+			'paths'		=> [ '/lookup' ]
 		],
 		'us-autocomplete' => [
 			'model'		=> SmartyStreetsAPI\Service\UsAutocomplete::class,
-			'hostname'	=> 'autocomplete-api.smartystreets.com',
+			'hostname'	=> 'us-autocomplete.api.smartystreets.com',
 			'paths'		=> [ '/suggest' ]
 		],
 		'us-extract' => [
 			'model'		=> SmartyStreetsAPI\Service\UsExtract::class,
-			'hostname'	=> 'extract-beta.api.smartystreets.com',
+			'hostname'	=> 'us-extract.api.smartystreets.com',
 			'paths'		=> [ '/' ]
 		],
 		'international-addresses' => [
@@ -102,12 +102,15 @@ return [
 			'hostname'	=> 'download.api.smartystreets.com',
 			'paths'		=> [
 				/** Download Endpoints Package Paths */
-				'us-street-api'			=> '/us-street-api/linux-amd64/latest.tar.gz',
-				'us-street-data'		=> '/us-street-api/data/latest.tar.gz',
-				'us-zipcode-api'		=> '/us-zipcode-api/linux-amd64/latest.tar.gz',
-				'us-zipcode-data'		=> '/us-zipcode-api/data/latest.tar.gz',
-				'us-autocomplete-api'	=> '/us-autocomplete-api/linux-amd64/latest.tar.gz',
-				'us-autocomplete-data'	=> '/us-autocomplete-api/data/latest.tar.gz'
+				'us-street-api'				=> '/us-street-api/linux-amd64/latest.tar.gz',
+				'us-street-data'			=> '/us-street-api/data/latest.tar.gz',
+				'us-zipcode-api'			=> '/us-zipcode-api/linux-amd64/latest.tar.gz',
+				'us-zipcode-data'			=> '/us-zipcode-api/data/latest.tar.gz',
+				'us-autocomplete-api'		=> '/us-autocomplete-api/linux-amd64/latest.tar.gz',
+				'us-autocomplete-data'		=> '/us-autocomplete-api/data/latest.tar.gz',
+				'us-extract-api'			=> '/us-extract-api/linux-amd64/latest.tar.gz',
+				'international-street-api'	=> '/international-street-api/linux-amd64/latest.tar.gz',
+				'international-street-data'	=> '/international-street-api/data/latest.tar.gz'
 			]
 		]
 	]

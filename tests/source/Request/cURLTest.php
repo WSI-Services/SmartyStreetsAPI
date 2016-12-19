@@ -276,8 +276,8 @@ class cURLTest extends BaseTestCase {
 			'Return code not correct'
 		);
 
-		$this->assertEquals(
-			'OK'.PHP_EOL,
+		$this->assertContains(
+			'OK',
 			$return['body'],
 			'Return body not correct'
 		);
@@ -290,7 +290,7 @@ class cURLTest extends BaseTestCase {
 		$requestData = [
 			'body' => '{test:true}',
 			'method' => 'POST',
-			'url' => 'api.smartystreets.com/zipcode',
+			'url' => 'us-zipcode.api.smartystreets.com/lookup',
 			'headers' => [
 				'User-Agent' => 'SmartyStreetsAPI/'.Factory::VERSION
 			]
