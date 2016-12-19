@@ -45,7 +45,7 @@ class ServiceProvider extends BaseServiceProvider {
 
 		$this->publishes([
 			$config => config_path('smartystreetsapi.php')
-		]);
+		], 'config');
 
 		$this->mergeConfigFrom($config, 'smartystreetsapi');
 	}

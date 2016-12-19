@@ -44,7 +44,8 @@ then [generate a Secret key](https://smartystreets.com/account#keys).
 
 About SmartyStreets
 ====
-<img style="float:left; border: 1px solid #d7d7d7; margin-right: 1em; padding: 4px; width: 350px;" src="https://smartystreets.com/resources/images/brand/smartystreets-gloss-inverted.png" alt="SmartyStreets">
+<img style="float:left; border: 1px solid #d7d7d7; margin-right: 1em; padding: 4px; width: 350px;" src="https://d79i1fxsrar4t.cloudfront.net/images/brand/smartystreets-gloss-inverted.f05fd211.png" alt="SmartyStreets">
+
 SmartyStreets provides address geocode parsing & verification, city, state, zip
 matching, address auto-complete, and address extraction.  Free and commercial
 accounts are available.
@@ -204,7 +205,7 @@ Add an alias within the aliases array found in `config/app.php`:
 
 Publish the configuration file:
 ```shell
-php artisan vendor:publish
+php artisan vendor:publish --provider="WSIServices\SmartyStreetsAPI\Support\Laravel\ServiceProvider" --tag="config"
 ```
 
 Edit the configurations, located in `config/smartystreetsapi.php`:
