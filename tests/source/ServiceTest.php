@@ -313,8 +313,10 @@ class ServiceTest extends BaseTestCase {
 			->with('https://'.$hostName);
 
 		$queryData = [
-			'auth-id'		=> '',
-			'auth-token'	=> ''
+			'secret' => [
+				'auth-id'		=> '',
+				'auth-token'	=> ''
+			]
 		];
 
 		$configuration->shouldReceive('getRaw')
@@ -324,7 +326,7 @@ class ServiceTest extends BaseTestCase {
 
 		$fileGetContents->shouldReceive('setQueryData')
 			->once()
-			->with($queryData);
+			->with($queryData['secret']);
 
 		$this->service->getRequest();
 	}
